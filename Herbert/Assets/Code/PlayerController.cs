@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-	Rigidbody _rigidBody;
-	BoxCollider _hitboxCollider;
-	BoxCollider _bottomCollider;
-	bool _isJumping = false;
-	public bool _isGrounded = true;
+	private Rigidbody _rigidBody;
+	private BoxCollider _hitboxCollider;
+	private BoxCollider _bottomCollider;
+	private bool _isJumping = false;
+	private bool _isGrounded = true;
 
 	// Start is called before the first frame update
 	void Start()
@@ -25,9 +25,9 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetButtonDown("MyJump"))
 			Jump();
 		if (Input.GetButton("MyLeft"))
-			_rigidBody.AddForce(Vector3.left * 10f);
+			_rigidBody.AddForce(Vector3.left * 20f);
 		if (Input.GetButton("MyRight"))
-			_rigidBody.AddForce(Vector3.right * 10f);
+			_rigidBody.AddForce(Vector3.right * 20f);
 	}
 
 	private void Jump()
@@ -48,5 +48,4 @@ public class PlayerController : MonoBehaviour
 		_isJumping = false;
 	}
 	public void SetGrounded(bool value) => _isGrounded = value;
-
 }

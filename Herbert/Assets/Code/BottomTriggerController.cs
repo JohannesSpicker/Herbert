@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +19,13 @@ public class BottomTriggerController : MonoBehaviour
 
 	}
 
+	#region Triggers
 	private void OnTriggerEnter(Collider other)
 	{
 		switch (other.tag)
 		{
 			case "Enemy":
+				KillEnemy(other);
 				break;
 			case "Ground":
 				_playerController.SetGrounded(true);
@@ -34,9 +37,6 @@ public class BottomTriggerController : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-
-		_playerController.SetGrounded(true);
-
 		switch (other.tag)
 		{
 			case "Ground":
@@ -57,5 +57,16 @@ public class BottomTriggerController : MonoBehaviour
 			default:
 				break;
 		}
+	}
+	#endregion
+
+	private void KillEnemy(Collider other)
+	{
+		EnemyController enemy = other.GetComponent<EnemyController>();
+
+		if (enemy != null)
+			enemy.Die();
+		else
+			other.gameObject.SetActive(false);
 	}
 }
