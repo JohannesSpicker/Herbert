@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public bool _reached = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	Material _material;
+
+	private void Awake()
+	{
+		_material = GetComponent<Renderer>()?.material;
+	}
+
+	void Start()
+	{
+
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag != "Player" || _reached == true)
+			return;
+
+		_reached = true;
+		if (_material != null)
+			_material.color = Color.green;
+		GlobalRefHolder.s_instance._checkPointController?.CheckPointReached(this);
+	}
 }

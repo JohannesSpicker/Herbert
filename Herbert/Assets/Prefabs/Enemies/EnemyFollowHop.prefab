@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6911766894168699254
+--- !u!114 &8953992661993829610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1854885735420939510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34e44615eec525468c743ec9b118276, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e6a2432aa4d5954ca86774660003493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 10
   _recoilMagnitude: 3000
 --- !u!1001 &8429719476112195491
 PrefabInstance:
@@ -79,13 +79,13 @@ PrefabInstance:
     - target: {fileID: 7872716065664381781, guid: 7f1927c866206fe4dbc8dcc82eda0145,
         type: 3}
       propertyPath: m_Name
-      value: EnemyFollow
+      value: EnemyFollowHop
       objectReference: {fileID: 0}
     - target: {fileID: 7872716065664381783, guid: 7f1927c866206fe4dbc8dcc82eda0145,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: efcc9869442798149bca4ac3b49d12cf, type: 2}
+      objectReference: {fileID: 2100000, guid: f6d420f151ccf70468ed24273fa43f24, type: 2}
     m_RemovedComponents:
     - {fileID: 7872716065664381778, guid: 7f1927c866206fe4dbc8dcc82eda0145, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f1927c866206fe4dbc8dcc82eda0145, type: 3}

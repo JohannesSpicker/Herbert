@@ -29,6 +29,8 @@ public class MatchController : MonoBehaviour
 			Die();
 	}
 
+	public void ResetHitPoints() => _hitpoints = _startingHitpoints;
+
 	public void ResetMatch()
 	{
 		_hitpoints = _startingHitpoints;
@@ -59,8 +61,12 @@ public class MatchController : MonoBehaviour
 		PlayerController player = GlobalRefHolder.s_instance._playerController;
 
 		if (player != null)
-			player.transform.position = GlobalRefHolder.s_instance._checkPointController.LastCheckPoint();
+		{
+			player.StopAllMotion();
+			player.transform.position = GlobalRefHolder.s_instance._checkPointController.LastCheckPointPosition();
+		}
 
-		ResetMatch();
+		ResetHitPoints();
+		GlobalRefHolder.s_instance._checkPointController?.RespawnEnemiesAtCurrentCheckPoint();
 	}
 }
