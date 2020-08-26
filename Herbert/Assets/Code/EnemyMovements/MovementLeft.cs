@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class MovementLeft : EnemyMovement
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Move()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public override void Move(Rigidbody rigidbody)
-    {
-        rigidbody.AddForce(Vector3.left * 5f);
+        _rigidbody.AddForce(Vector3.left * 5f);
     }
 }

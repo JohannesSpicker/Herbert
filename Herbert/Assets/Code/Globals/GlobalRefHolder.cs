@@ -25,7 +25,11 @@ public class GlobalRefHolder : Singleton<GlobalRefHolder>
 
 	private void SetFieldOrAddComponentIfNull<T>(ref T field) where T : MonoBehaviour
 	{
+		if (field != null)
+			return;
+
 		field = GetComponent<T>();
+
 		if (field == null)
 			field = gameObject.AddComponent<T>();
 	}
