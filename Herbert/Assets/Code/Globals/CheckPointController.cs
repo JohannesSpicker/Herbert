@@ -8,6 +8,8 @@ public enum EnemyTypes { Follow, HopJump, SinLeft, FollowHop };
 
 public class CheckPointController : MonoBehaviour
 {
+#pragma warning disable CS0649
+
 	CheckPoint _lastCheckPoint;
 	CheckPoint[] _checkPoints;
 	Dictionary<CheckPoint, List<EnemyPlaceholder>> _placeholderDict = new Dictionary<CheckPoint, List<EnemyPlaceholder>>();
