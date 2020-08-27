@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e44615eec525468c743ec9b118276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 20
   _recoilMagnitude: 3000
 --- !u!1001 &8429719476112195491
 PrefabInstance:
@@ -75,6 +75,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872716065664381779, guid: 7f1927c866206fe4dbc8dcc82eda0145,
+        type: 3}
+      propertyPath: _scoreValue
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7872716065664381781, guid: 7f1927c866206fe4dbc8dcc82eda0145,
         type: 3}

@@ -28,4 +28,11 @@ public class CheckPoint : MonoBehaviour
 			_material.color = Color.green;
 		GlobalRefHolder.s_instance._checkPointController?.CheckPointReached(this);
 	}
+
+	public void ResetToDefault()
+	{
+		_reached = false;
+		if (_material != null)
+			_material.color = Color.red;
+	}
 }

@@ -69,7 +69,7 @@ public class CheckPointController : MonoBehaviour
 
 		if (checkPoint == _checkPoints[_checkPoints.Length - 1])
 		{
-			//wincondition
+			GlobalRefHolder.s_instance._matchcontroller?.EndGame();
 		}
 	}
 
@@ -88,6 +88,28 @@ public class CheckPointController : MonoBehaviour
 	}
 
 	public void RespawnEnemiesAtCurrentCheckPoint() => SpawnEnemiesOfCheckPoint(_lastCheckPoint);
+	public void DespawnAllEnemies()
+	{
+		foreach (CheckPoint check in _checkPoints)
+		{
+			foreach (GameObject enemy in _enemyDict[check])
+				Destroy(enemy, 0.1f);
+
+			_enemyDict[check].Clear();
+		}
+	}
+	public void ReturnPlayerToLevelStart()
+	{
+		DespawnAllEnemies();
+
+		if (0 == _checkPoints.Length)
+			return;
+
+		foreach (CheckPoint check in _checkPoints)
+			check.ResetToDefault();
+
+		_lastCheckPoint = _checkPoints[0];
+	}
 
 	private GameObject EnemyPrefabFromType(EnemyTypes type)
 	{

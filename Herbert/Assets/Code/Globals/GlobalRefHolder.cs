@@ -6,6 +6,7 @@ using UnityEngine;
 public class GlobalRefHolder : Singleton<GlobalRefHolder>
 {
 	public PlayerController _playerController;
+	public CanvasRefHolder _canvasRefHolder;
 
 	public MatchController _matchcontroller;
 	public CheckPointController _checkPointController;
@@ -13,14 +14,10 @@ public class GlobalRefHolder : Singleton<GlobalRefHolder>
 	void Start()
 	{
 		_playerController = FindObjectOfType<PlayerController>();
+		_canvasRefHolder = FindObjectOfType<CanvasRefHolder>();
 
 		SetFieldOrAddComponentIfNull<MatchController>(ref _matchcontroller);
 		SetFieldOrAddComponentIfNull<CheckPointController>(ref _checkPointController);
-	}
-
-	void Update()
-	{
-
 	}
 
 	private void SetFieldOrAddComponentIfNull<T>(ref T field) where T : MonoBehaviour

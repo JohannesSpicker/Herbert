@@ -8,7 +8,7 @@ public class MovementFollow : EnemyMovement
 	{
 		if (GlobalRefHolder.s_instance._playerController != null)
 		{
-			_rigidbody.AddForce((GlobalRefHolder.s_instance._playerController.transform.position - transform.position) * _speed);
+			_rigidbody.AddForce((GlobalRefHolder.s_instance._playerController.transform.position - transform.position).normalized * _speed);
 		}
 	}
 }

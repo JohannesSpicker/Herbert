@@ -5,6 +5,8 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class MatchController : MonoBehaviour
 {
+	[SerializeField] private const int _scorePerCoin = 3;
+
 	public int _startingHitpoints = 3;
 
 	private int _hitpointsBackingField = 3;
@@ -66,8 +68,7 @@ public class MatchController : MonoBehaviour
 		_score = 0;
 		_coins = 0;
 
-		//reset enemies
-		//reset coin objects
+		Respawn(true);
 	}
 
 	public void Die()
@@ -85,17 +86,41 @@ public class MatchController : MonoBehaviour
 		_coins += value;
 	}
 
-	private void Respawn()
+	private void Respawn(bool atStart = false)
 	{
 		PlayerController player = GlobalRefHolder.s_instance._playerController;
 
 		if (player != null)
 		{
 			player.StopAllMotion();
+
+			if (atStart)
+				GlobalRefHolder.s_instance._checkPointController?.ReturnPlayerToLevelStart();
+
 			player.transform.position = GlobalRefHolder.s_instance._checkPointController.LastCheckPointPosition();
 		}
 
 		ResetHitPoints();
 		GlobalRefHolder.s_instance._checkPointController?.RespawnEnemiesAtCurrentCheckPoint();
+	}
+
+	public void EndGame()
+	{
+		//GlobalRefHolder.s_instance._playerController?.gameObject.SetActive(false);
+		GlobalRefHolder.s_instance._checkPointController?.DespawnAllEnemies();
+		StartCoroutine(AddCoinsToScore());
+	}
+
+	private IEnumerator AddCoinsToScore()
+	{
+		while (0 < _coins)
+		{
+			_coins--;
+			_score += _scorePerCoin;
+			GlobalRefHolder.s_instance?._canvasRefHolder?.SetEndgameText(_coins.ToString(), _score.ToString());
+			yield return new WaitForSeconds(0.25f);
+		}
+
+		Time.timeScale = 0f;
 	}
 }
