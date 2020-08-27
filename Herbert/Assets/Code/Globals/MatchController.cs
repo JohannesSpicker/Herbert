@@ -6,10 +6,39 @@ using UnityEngine.SocialPlatforms.Impl;
 public class MatchController : MonoBehaviour
 {
 	public int _startingHitpoints = 3;
-	public int _hitpoints;
 
-	public int _score = 0;
-	public int _coins = 0;
+	private int _hitpointsBackingField = 3;
+	private int _scoreBackingField = 0;
+	private int _coinBackingField = 0;
+
+	public int _hitpoints
+	{
+		get => _hitpointsBackingField;
+		set
+		{
+			_hitpointsBackingField = value;
+			CanvasRefHolder.s_hitPointDisplay?.Invoke(value.ToString());
+		}
+	}
+	public int _score
+	{
+		get => _scoreBackingField;
+		set
+		{
+			_scoreBackingField = value;
+			CanvasRefHolder.s_scoreDisplay?.Invoke(value.ToString());
+		}
+	}
+	public int _coins
+	{
+		get => _coinBackingField;
+		set
+		{
+			_coinBackingField = value;
+			CanvasRefHolder.s_coinDisplay?.Invoke(value.ToString());
+		}
+	}
+
 
 	void Start()
 	{

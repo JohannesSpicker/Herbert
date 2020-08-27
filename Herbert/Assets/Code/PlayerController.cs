@@ -26,9 +26,9 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetButtonDown("MyJump"))
 			Jump();
 		if (Input.GetButton("MyLeft"))
-			_rigidbody.AddForce(Vector3.left * 20f * (_isGrounded ? 2f : 0.5f));
+			_rigidbody.AddForce(Vector3.left * 20f * (_isGrounded ? 1f : 0.25f));
 		if (Input.GetButton("MyRight"))
-			_rigidbody.AddForce(Vector3.right * 20f * (_isGrounded ? 2f : 0.5f));
+			_rigidbody.AddForce(Vector3.right * 20f * (_isGrounded ? 1f : 0.25f));
 	}
 
 	public void StopAllMotion() => _rigidbody.velocity = Vector3.zero;
